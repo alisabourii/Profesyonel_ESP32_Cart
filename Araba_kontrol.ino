@@ -86,20 +86,20 @@ void loop(){
             client.println();
             
             // turns the GPIOs on and off
-            if (header.indexOf("GET /26/on") >= 0) {
+            if (header.indexOf("GET /ileri/on") >= 0) {
               Serial.println("ILERI on");
               ileri_durum = "on";
               ileri(); } 
-            else if (header.indexOf("GET /26/off") >= 0) {
+            else if (header.indexOf("GET /ileri/off") >= 0) {
               Serial.println("ILERI off");
               ileri_durum = "off";
               dur();}
 
-            else if (header.indexOf("GET /27/on") >= 0) {
+            else if (header.indexOf("GET /geri/on") >= 0) {
               Serial.println("GERI on");
               geri_durum = "on";
               geri();}
-            else if (header.indexOf("GET /27/off") >= 0) {
+            else if (header.indexOf("GET /geri/off") >= 0) {
               Serial.println("GERI off");
               geri_durum = "off";
               dur(); }
@@ -143,18 +143,18 @@ void loop(){
             client.println("<p>ileri " + ileri_durum + "</p>");
             // If the output26State is off, it displays the ON button       
             if (ileri_durum=="off") {
-              client.println("<p><a href=\"/26/on\"><button class=\"button\">ILERI</button></a></p>");
+              client.println("<p><a href=\"/ileri/on\"><button class=\"button\">ILERI</button></a></p>");
             } else {
-              client.println("<p><a href=\"/26/off\"><button class=\"button button2\">DUR</button></a></p>");
+              client.println("<p><a href=\"/ileri/off\"><button class=\"button button2\">DUR</button></a></p>");
             } 
                
             // Display current state, and ON/OFF buttons for GPIO 27  
             client.println("<p>Geri " + geri_durum + "</p>");
             // If the output27State is off, it displays the ON button       
             if (geri_durum=="off") {
-              client.println("<p><a href=\"/27/on\"><button class=\"button\">GERI</button></a></p>");
+              client.println("<p><a href=\"/geri/on\"><button class=\"button\">GERI</button></a></p>");
             } else {
-              client.println("<p><a href=\"/27/off\"><button class=\"button button2\">DUR</button></a></p>");
+              client.println("<p><a href=\"/geri/off\"><button class=\"button button2\">DUR</button></a></p>");
             }
 
             // Display current state, and ON/OFF buttons for GPIO 27  
